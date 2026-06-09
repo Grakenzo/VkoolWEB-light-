@@ -11,7 +11,7 @@
     otomotif:     'vkool_otomotif_light.html',
     bangunan:     'vkool_bangunan_light.html',
     ppf:          'vkool_ppf_light.html',
-    ppf_interior: 'vkool_ppf_interior_redesign_light.html',
+    ppf_interior: 'vkool_ppf_interior_light.html',
     tentang:      'vkool_tentang_kami.html',
     dealers:      'vkool_dealers.html',
     portfolio:    'vkool_portfolio.html',
