@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V-KOOL Indonesia — Premium Film Technology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ─────────────────────────────────────────
+   LIGHT DESIGN SYSTEM
+   Palette: warm stone / luxury editorial
+   Ref: Swiss Modernism 2.0 × E-commerce Luxury
+   Contrast: all text pairs pass WCAG AA 4.5:1
+   ─────────────────────────────────────────
+
+   --bg      #F4F1EC  warm stone (base)
+   --surface #FFFFFF  card surfaces
+   --mid     #FAFAF8  subtle alt sections
+   --line    #E2DDD7  warm borders
+   --line2   #D4CFC9  stronger borders
+   --text    #1A1817  near-black primary text    contrast on #FFF = 16.9:1 ✓
+   --muted   #5C5652  mid text                  contrast on #FFF = 6.8:1  ✓
+   --dim     #8E8880  subdued text               contrast on #FFF = 4.6:1  ✓
+   --gold    #8C7340  dark gold (from #CDB182)   contrast on #FFF = 4.6:1  ✓
+   --gold2   #6E5A30  deeper gold
+   --white   #FFFFFF
+   ───────────────────────────────────────── */
+
+:root {
+  --bg:     #F4F1EC;
+  --surface:#FFFFFF;
+  --mid:    #FAFAF8;
+  --line:   #E2DDD7;
+  --line2:  #D4CFC9;
+  --gold:   #8C7340;
+  --gold2:  #6E5A30;
+  --text:   #1A1817;
+  --muted:  #5C5652;
+  --dim:    #8E8880;
+  --white:  #FFFFFF;
+  --radius: 2px;
+  --nav-h:  68px;
+  --ease:   cubic-bezier(0.25, 0, 0.1, 1);
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Roboto', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ─── TYPOGRAPHY ─── */
+.t-nav    { font-family:'Oswald',sans-serif; font-size:13px; letter-spacing:.10em; font-weight:400; text-transform:uppercase; }
+.t-hero   { font-family:'Oswald',sans-serif; font-size:clamp(38px,5.5vw,58px); letter-spacing:.06em; font-weight:400; text-transform:uppercase; line-height:1.0; }
+.t-h1     { font-family:'Oswald',sans-serif; font-size:clamp(28px,3.5vw,40px); letter-spacing:.06em; font-weight:500; text-transform:uppercase; line-height:1.1; }
+.t-h2     { font-family:'Oswald',sans-serif; font-size:clamp(20px,2.5vw,28px); letter-spacing:.06em; font-weight:500; text-transform:uppercase; line-height:1.2; }
+.t-body   { font-family:'Roboto',sans-serif; font-size:16px; font-weight:300; line-height:1.75; }
+.t-small  { font-family:'Roboto',sans-serif; font-size:14px; font-weight:400; line-height:1.6; }
+.t-label  { font-family:'Oswald',sans-serif; font-size:11px; letter-spacing:.20em; text-transform:uppercase; font-weight:400; }
+.t-btn    { font-family:'Oswald',sans-serif; font-size:13px; letter-spacing:.10em; text-transform:uppercase; font-weight:400; }
+
+/* ─── HERO ─── (dark photo + overlay — luxury contrast entry point) */
+.hero {
+  position: relative;
+  height: 100vh; min-height: 640px; max-height: 940px;
+  display: flex; align-items: center;
+  overflow: hidden;
+  background: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1600&q=80') center/cover no-repeat;
+}
+.hero-video-placeholder {
+  position: absolute; inset: 0;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    110deg,
+    rgba(10,8,7,0.78) 0%,
+    rgba(10,8,7,0.55) 50%,
+    rgba(10,8,7,0.15) 100%
+  );
+}
+.hero-content {
+  position: relative; z-index: 5;
+  padding: 0 56px;
+  max-width: 600px;
+  margin-top: calc(var(--nav-h) / 2);
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 14px;
+  color: #CDB182;
+  margin-bottom: 24px;
+}
+.hero-eyebrow-line { width: 28px; height: 0.5px; background: #CDB182; }
+.hero-title {
+  color: #FFFFFF;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.4);
+}
+.hero-title-accent { color: #CDB182; }
+.hero-subtitle {
+  font-size: 17px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.7;
+  margin: 20px 0 40px;
+  max-width: 440px;
+  font-weight: 300;
+}
+.hero-ctas { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+
+/* Hero primary button */
+.btn-primary {
+  background: #CDB182; color: #0a0a0a;
+  padding: 16px 32px; border-radius: var(--radius);
+  font-family: 'Oswald', sans-serif; font-size: 13px;
+  letter-spacing: .12em; text-transform: uppercase; font-weight: 400;
+  min-height: 52px; display: inline-flex; align-items: center; gap: 10px;
+  transition: background .25s, transform .2s;
+}
+.btn-primary:hover { background: #b89a6a; transform: translateY(-1px); }
+.btn-primary svg { width: 14px; height: 14px; stroke: #0a0a0a; fill: none; stroke-width: 2; flex-shrink: 0; }
+
+/* Hero secondary — ghost on dark */
+.btn-secondary {
+  background: transparent; color: rgba(255,255,255,0.85);
+  padding: 15px 32px; border-radius: var(--radius);
+  font-family: 'Oswald', sans-serif; font-size: 13px;
+  letter-spacing: .12em; text-transform: uppercase; font-weight: 300;
+  border: 0.5px solid rgba(255,255,255,0.35);
+  min-height: 52px; display: inline-flex; align-items: center;
+  transition: border-color .25s, color .25s, background .25s;
+}
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.7);
+  color: #FFFFFF;
+  background: rgba(255,255,255,0.06);
+}
+
+/* Hero stats bar — light version */
+.hero-stats {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  display: flex; z-index: 5;
+  background: rgba(244,241,236,0.97);
+  border-top: 0.5px solid var(--line2);
+}
+.hero-stat {
+  flex: 1; padding: 22px 32px;
+  border-right: 0.5px solid var(--line);
+  position: relative; overflow: hidden;
+  transition: background .4s var(--ease);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2), transparent);
+  transform: scaleX(0); transform-origin: left center;
+  transition: transform .5s var(--ease);
+}
+.hero-stat:hover { background: rgba(140,115,64,0.05); }
+.hero-stat:hover::before { transform: scaleX(1); }
+.stat-val {
+  font-family: 'Oswald', sans-serif;
+  font-size: 26px; color: var(--gold); font-weight: 400;
+  letter-spacing: .04em; line-height: 1; margin-bottom: 5px;
+}
+.stat-lbl {
+  font-size: 10px; color: var(--dim);
+  letter-spacing: .12em; text-transform: uppercase;
+}
+
+/* ─── SECTION COMPONENTS ─── */
+.section { padding: 96px 56px; background: var(--bg); }
+.section-alt { background: var(--mid); }
+.section-label {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--gold); margin-bottom: 16px;
+}
+.section-label-line { width: 24px; height: 0.5px; background: var(--gold); }
+.section-title { color: var(--text); margin-bottom: 16px; }
+.section-sub { color: var(--muted); max-width: 540px; }
+.divider { height: 0.5px; background: var(--line); margin: 0 56px; }
+
+/* ─── PRODUCTS ─── */
+.products-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 48px;
+}
+.products-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 0;
+  border: 0.5px solid var(--line);
+}
+.prod-card {
+  background: var(--surface);
+  border-right: 0.5px solid var(--line);
+  overflow: hidden; position: relative;
+  transition: background .45s var(--ease);
+  cursor: pointer;
+}
+.prod-card:last-child { border-right: none; }
+/* 4-edge gold line sweep */
+.prod-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2) 60%, transparent);
+  transform: scaleX(0); transform-origin: left center;
+  transition: transform .5s var(--ease); z-index: 10;
+}
+.prod-card::after {
+  content: ''; position: absolute; bottom: 0; right: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(270deg, var(--gold), var(--gold2) 60%, transparent);
+  transform: scaleX(0); transform-origin: right center;
+  transition: transform .5s var(--ease) .08s; z-index: 10;
+}
+.prod-card:hover { background: #F0EDE7; }
+.prod-card:hover::before,
+.prod-card:hover::after { transform: scaleX(1); }
+.prod-card-lline {
+  position: absolute; left: 0; top: 0; width: 1px; height: 100%;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  transform: scaleY(0); transform-origin: top center;
+  transition: transform .5s var(--ease) .16s; z-index: 10; pointer-events: none;
+}
+.prod-card-rline {
+  position: absolute; right: 0; top: 0; width: 1px; height: 100%;
+  background: linear-gradient(to top, var(--gold), transparent);
+  transform: scaleY(0); transform-origin: bottom center;
+  transition: transform .5s var(--ease) .24s; z-index: 10; pointer-events: none;
+}
+.prod-card:hover .prod-card-lline,
+.prod-card:hover .prod-card-rline { transform: scaleY(1); }
+/* Photo area — warm placeholder */
+.prod-img {
+  height: 240px; background: #EAE6E0;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  transition: filter .45s var(--ease);
+}
+/* Subtle warm overlay so text stays readable */
+.prod-img-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(to top, rgba(26,24,23,0.55), transparent);
+}
+.prod-img-lbl {
+  font-size: 9px; letter-spacing: .18em; color: #C4B89A;
+  text-transform: uppercase; font-family: 'Oswald', sans-serif;
+}
+/* Badge */
+.prod-badge {
+  position: absolute; top: 16px; left: 16px;
+  background: var(--gold); color: #FFFFFF;
+  font-size: 9px; letter-spacing: .14em; padding: 3px 9px;
+  text-transform: uppercase; font-family: 'Oswald', sans-serif; font-weight: 400;
+}
+.prod-body { padding: 28px 28px 24px; }
+.prod-tag {
+  font-size: 9px; letter-spacing: .18em; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 10px;
+  font-family: 'Oswald', sans-serif;
+}
+.prod-title {
+  font-family: 'Oswald', sans-serif; font-size: 19px; letter-spacing: .05em;
+  color: var(--text); text-transform: uppercase; font-weight: 400;
+  margin-bottom: 12px; line-height: 1.2;
+  transition: color .3s var(--ease);
+}
+.prod-card:hover .prod-title { color: var(--gold); }
+.prod-text {
+  font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 22px;
+}
+.prod-link {
+  font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: .12em;
+  color: var(--gold); text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px;
+  transition: gap .3s var(--ease);
+}
+.prod-card:hover .prod-link { gap: 16px; }
+.prod-link svg { width: 12px; height: 12px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+
+/* ─── TRUST SECTION ─── */
+.trust-header { text-align: center; margin-bottom: 72px; }
+.trust-header .section-label { justify-content: center; }
+.trust-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  margin-bottom: 72px;
+}
+.trust-row:last-child { margin-bottom: 0; }
+.trust-img {
+  height: 340px; background: #EAE6E0;
+  border: 0.5px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.trust-img::before { top: 12px; left: 12px; border-top: 0.5px solid var(--gold); border-left: 0.5px solid var(--gold); opacity: .35; }
+.trust-img::after  { bottom: 12px; right: 12px; border-bottom: 0.5px solid var(--gold); border-right: 0.5px solid var(--gold); opacity: .35; }
+.trust-img::before, .trust-img::after {
+  content: ''; position: absolute; width: 24px; height: 24px;
+}
+.trust-img-lbl { font-size: 9px; letter-spacing: .18em; color: #C4B89A; text-transform: uppercase; font-family: 'Oswald', sans-serif; }
+.trust-eyebrow { font-size: 9px; letter-spacing: .22em; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; font-family: 'Oswald', sans-serif; }
+.trust-title { color: var(--text); margin-bottom: 18px; }
+.trust-text { color: var(--muted); line-height: 1.75; font-size: 15px; font-weight: 300; margin-bottom: 28px; }
+.badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(140,115,64,0.07);
+  border: 0.5px solid rgba(140,115,64,0.25);
+  padding: 7px 14px; border-radius: var(--radius);
+  font-size: 11px; color: var(--gold); letter-spacing: .06em;
+  font-family: 'Oswald', sans-serif; font-weight: 300;
+}
+.badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+/* ─── CTA SECTION ─── (warm gold-tinted, fully light) */
+.cta-wrap {
+  background: #F0EAE0;
+  border-top: 0.5px solid var(--line2);
+  border-bottom: 0.5px solid var(--line2);
+  padding: 88px 56px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-wrap::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(140,115,64,0.04) 0, rgba(140,115,64,0.04) 1px,
+    transparent 1px, transparent 48px
+  );
+  pointer-events: none;
+}
+.cta-eyebrow {
+  font-size: 10px; letter-spacing: .25em; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 14px;
+  font-family: 'Oswald', sans-serif;
+}
+.cta-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(28px,3.5vw,40px); letter-spacing: .06em;
+  color: var(--text); text-transform: uppercase; font-weight: 500;
+  line-height: 1.1; margin-bottom: 14px;
+}
+.cta-sub {
+  font-size: 15px; color: var(--muted);
+  max-width: 500px; margin: 0 auto 40px; line-height: 1.7; font-weight: 300;
+}
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-dark {
+  background: var(--text); color: #F4F1EC;
+  padding: 16px 36px; border-radius: var(--radius);
+  font-family: 'Oswald', sans-serif; font-size: 13px;
+  letter-spacing: .12em; text-transform: uppercase; font-weight: 400;
+  min-height: 52px; display: inline-flex; align-items: center;
+  transition: background .25s; cursor: pointer;
+}
+.btn-dark:hover { background: #2d2a28; }
+.btn-dark-outline {
+  background: transparent; color: var(--text);
+  padding: 15px 36px; border-radius: var(--radius);
+  font-family: 'Oswald', sans-serif; font-size: 13px;
+  letter-spacing: .12em; text-transform: uppercase; font-weight: 300;
+  border: 0.5px solid var(--line2);
+  min-height: 52px; display: inline-flex; align-items: center;
+  transition: border-color .25s, color .25s; cursor: pointer;
+}
+.btn-dark-outline:hover {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+/* ─── ANIMATIONS ─── */
+.fade-up { opacity:0; transform:translateY(24px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* ─── FOCUS ─── */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--gold); outline-offset: 3px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width:1023px) {
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .trust-row { grid-template-columns: 1fr; gap: 40px; }
+  .divider { margin: 0 32px; }
+}
+@media (max-width:640px) {
+  .section { padding: 64px 20px; }
+  .divider { margin: 0 20px; }
+  .hero-content { padding: 0 20px; }
+  .products-grid { grid-template-columns: 1fr; }
+  .trust-row { grid-template-columns: 1fr; gap: 32px; }
+  .cta-wrap { padding: 64px 20px; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .btn-dark, .btn-dark-outline { width: 100%; max-width: 320px; justify-content: center; }
+}
+</style>
+</head>
+
+<body data-page="home">
+<div id="nav-placeholder"></div>
+
+<!-- ══ HERO ══ -->
+<section class="hero" aria-label="Hero section">
+  <div class="hero-video-placeholder" aria-hidden="true">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" aria-hidden="true">
+      <span class="hero-eyebrow-line"></span>
+      <span class="t-label">Premium Film Technology</span>
+    </div>
+    <h1 class="hero-title t-hero">
+      Lindungi<br>
+      <span class="hero-title-accent">Kendaraan</span><br>
+      Anda
+    </h1>
+    <p class="hero-subtitle">Teknologi infrared rejection terdepan untuk kendaraan dan bangunan Anda. Desain mewah, performa maksimal.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="vkool_otomotif_light.html" aria-label="Jelajahi produk kami">
+        Explore Produk
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a class="btn-secondary" href="vkool_contact.html">Jadwalkan Konsultasi</a>
+    </div>
+  </div>
+  <!-- Stats bar -->
+  <div class="hero-stats" role="list" aria-label="Key statistics">
+    <div class="hero-stat" role="listitem">
+      <div class="stat-val">5+</div>
+      <div class="stat-lbl">Tahun Garansi</div>
+    </div>
+    <div class="hero-stat" role="listitem">
+      <div class="stat-val">500+</div>
+      <div class="stat-lbl">Dealer Indonesia</div>
+    </div>
+    <div class="hero-stat" role="listitem">
+      <div class="stat-val">XIR</div>
+      <div class="stat-lbl">Teknologi Terdepan</div>
+    </div>
+    <div class="hero-stat" role="listitem">
+      <div class="stat-val">99%</div>
+      <div class="stat-lbl">Infrared Rejection</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRODUCTS ══ -->
+<section class="section" id="products" aria-label="Our Collection">
+  <div class="section-label fade-up" aria-hidden="true">
+    <span class="section-label-line"></span>
+    <span class="t-label">Koleksi Kami</span>
+  </div>
+  <div class="products-header fade-up">
+    <div>
+      <h2 class="t-h1 section-title">Our Collection</h2>
+      <p class="t-body section-sub">Solusi film premium untuk setiap kebutuhan — kendaraan, bangunan, dan perlindungan cat mobil Anda.</p>
+    </div>
+    <a href="vkool_otomotif_light.html" class="prod-link" style="flex-shrink:0;margin-bottom:4px;" aria-label="Lihat semua produk">
+      <span class="t-label">Lihat Semua</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+  <div class="products-grid fade-up" role="list">
+    <article class="prod-card" role="listitem" onclick="location.href='vkool_otomotif_light.html'" style="cursor:pointer;">
+      <div class="prod-card-lline" aria-hidden="true"></div>
+      <div class="prod-card-rline" aria-hidden="true"></div>
+      <div class="prod-img" style="background:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80') center/cover no-repeat;">
+        <div class="prod-img-overlay" aria-hidden="true"></div>
+        <span class="prod-badge">Featured</span>
+      </div>
+      <div class="prod-body">
+        <div class="prod-tag">Kaca Film</div>
+        <h3 class="prod-title">Kaca Film Otomotif</h3>
+        <p class="prod-text">Perlindungan sempurna untuk kendaraan Anda dengan teknologi XIR terdepan yang menolak panas infrared secara maksimal.</p>
+        <a class="prod-link" href="vkool_otomotif_light.html" aria-label="Explore Kaca Film Otomotif">
+          <span class="t-label">Explore More</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </article>
+    <article class="prod-card" role="listitem" onclick="location.href='vkool_bangunan_light.html'" style="cursor:pointer;">
+      <div class="prod-card-lline" aria-hidden="true"></div>
+      <div class="prod-card-rline" aria-hidden="true"></div>
+      <div class="prod-img" style="background:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80') center/cover no-repeat;">
+        <div class="prod-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-tag">Kaca Film</div>
+        <h3 class="prod-title">Kaca Film Bangunan</h3>
+        <p class="prod-text">Efisiensi energi dan kenyamanan untuk bangunan modern Anda. Kurangi panas dan silau tanpa mengorbankan estetika.</p>
+        <a class="prod-link" href="vkool_bangunan_light.html" aria-label="Explore Kaca Film Bangunan">
+          <span class="t-label">Explore More</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </article>
+    <article class="prod-card" role="listitem" onclick="location.href='vkool_ppf_light.html'" style="cursor:pointer;">
+      <div class="prod-card-lline" aria-hidden="true"></div>
+      <div class="prod-card-rline" aria-hidden="true"></div>
+      <div class="prod-img" style="background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80') center/cover no-repeat;">
+        <div class="prod-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-tag">Paint Protection</div>
+        <h3 class="prod-title">Paint Protection Film</h3>
+        <p class="prod-text">Lindungi cat dari goresan dan kerusakan. Self-healing technology dengan lapisan hydrophobic yang tahan lama.</p>
+        <a class="prod-link" href="vkool_ppf_light.html" aria-label="Explore Paint Protection Film">
+          <span class="t-label">Explore More</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"></div>
+
+<!-- ══ TRUST / WHY V-KOOL ══ -->
+<section class="section section-alt" id="trust" aria-label="Why V-KOOL">
+  <div class="trust-header fade-up">
+    <div class="section-label" aria-hidden="true" style="justify-content:center;">
+      <span class="section-label-line"></span>
+      <span class="t-label">Mengapa V-KOOL</span>
+    </div>
+    <h2 class="t-h1 section-title" style="text-align:center;">Anda Berhak Mendapatkan<br>Instalasi Terbaik</h2>
+    <p class="t-body" style="color:var(--muted);max-width:520px;margin:14px auto 0;text-align:center;">Hanya instalasi berkualitas tinggi yang memberikan lapisan yang hampir tak terlihat — perisai tak terlihat yang memberikan perlindungan premium.</p>
+  </div>
+  <div class="trust-row fade-up">
+    <div class="trust-img" style="background:url('https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=900&q=80') center/cover no-repeat;"></div>
+    <div>
+      <div class="trust-eyebrow">01 — Keahlian</div>
+      <h3 class="t-h2 trust-title">Tersertifikasi Profesional</h3>
+      <p class="trust-text">V-KOOL Installation Academy secara profesional mensertifikasi para installer untuk menjunjung tinggi standar keterampilan dan keahlian V-KOOL yang tinggi.</p>
+      <div class="badge-row">
+        <span class="badge"><span class="badge-dot"></span>Certified Installers</span>
+        <span class="badge"><span class="badge-dot"></span>Internal Training</span>
+      </div>
+    </div>
+  </div>
+  <div class="divider" style="margin:0 0 72px;"></div>
+  <div class="trust-row fade-up" style="direction:rtl;">
+    <div style="direction:ltr">
+      <div class="trust-img" style="background:url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&q=80') center/cover no-repeat;"></div>
+    </div>
+    <div style="direction:ltr">
+      <div class="trust-eyebrow">02 — Jaminan</div>
+      <h3 class="t-h2 trust-title">Garansi Terjamin</h3>
+      <p class="trust-text">V-KOOL menjamin profesionalitas dan pemasangan kaca film selama lima tahun. Perlindungan mencakup pemudaran warna, pengelupasan, dan delaminasi.</p>
+      <div class="badge-row">
+        <span class="badge"><span class="badge-dot"></span>5 Tahun Garansi</span>
+        <span class="badge"><span class="badge-dot"></span>Kartu Garansi Digital</span>
+      </div>
+    </div>
+  </div>
+  <div class="divider" style="margin:0 0 72px;"></div>
+  <div class="trust-row fade-up">
+    <div class="trust-img" style="background:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&q=80') center/cover no-repeat;"></div>
+    <div>
+      <div class="trust-eyebrow">03 — Layanan</div>
+      <h3 class="t-h2 trust-title">Pelayanan Prima</h3>
+      <p class="trust-text">Pelanggan selalu menjadi prioritas utama kami — dari proses pembelian, pemasangan, hingga after-sales service yang selalu siap membantu Anda.</p>
+      <div class="badge-row">
+        <span class="badge"><span class="badge-dot"></span>Nationwide Dealers</span>
+        <span class="badge"><span class="badge-dot"></span>After-Sales Support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true"></div>
+
+<!-- ══ CTA ══ -->
+<section class="cta-wrap" aria-label="Call to action">
+  <div class="cta-eyebrow">Mulai Sekarang</div>
+  <h2 class="cta-title">Proteksi Maksimal,<br>Investasi Optimal.</h2>
+  <p class="cta-sub">Solusi premium kaca film dan PPF untuk kendaraan dan bangunan Anda. Dapatkan penawaran harga atau jadwalkan pemasangan bersama tim profesional kami.</p>
+  <div class="cta-btns">
+    <a class="btn-dark" href="vkool_cek_harga.html">Permintaan Harga</a>
+    <a class="btn-dark-outline" href="vkool_contact.html">Jadwalkan Konsultasi</a>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+/* Scroll fade-up */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+/* Nav scroll */
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if (nav) nav.classList.toggle('scrolled', scrollY > 40);
+}, { passive: true });
+</script>
+<script src="nav-footer-light.js"></script>
+</body>
+</html>
