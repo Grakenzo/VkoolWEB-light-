@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V-KOOL Paint Protection Film — Light</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════
+   V-KOOL PPF — LIGHT VERSION
+   Warm stone × luxury editorial
+═══════════════════════════════════════ */
+:root {
+  --black:  #F4F1EC;
+  --dark:   #FFFFFF;
+  --mid:    #FAFAF8;
+  --line:   #E2DDD7;
+  --line2:  #D4CFC9;
+  --gold:   #8C7340;
+  --gold2:  #6E5A30;
+  --gold-h: #6E5A30;
+  --ash:    #1A1817;
+  --muted:  #5C5652;
+  --dim:    #8E8880;
+  --white:  #1A1817;
+  --radius: 2px;
+  --nav-h:  68px;
+  --pad:    56px;
+  --ease:   cubic-bezier(0.25,0,0.1,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:'Roboto',sans-serif;background:#F4F1EC;color:#1A1817;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+img{display:block;}
+
+/* ── TYPOGRAPHY ── */
+.t-nav  {font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.10em;font-weight:400;text-transform:uppercase;}
+.t-label{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.20em;text-transform:uppercase;font-weight:400;}
+.t-btn  {font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.10em;text-transform:uppercase;font-weight:400;}
+
+/* ── HERO BUTTONS (on dark photo) ── */
+.btn-primary{background:#CDB182;color:#0a0a0a;padding:16px 32px;border-radius:2px;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:400;min-height:52px;display:inline-flex;align-items:center;gap:10px;transition:background .25s,transform .2s;cursor:pointer;text-decoration:none;border:none;}
+.btn-primary:hover{background:#b89a6a;transform:translateY(-1px);}
+.btn-secondary{background:transparent;color:rgba(255,255,255,.82);padding:15px 32px;border-radius:2px;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:300;border:.5px solid rgba(255,255,255,.32);min-height:52px;display:inline-flex;align-items:center;transition:border-color .25s,color .25s;cursor:pointer;text-decoration:none;}
+.btn-secondary:hover{border-color:rgba(255,255,255,.7);color:#FFFFFF;}
+
+/* ── HERO — dark photo, light text ── */
+.hero{position:relative;width:100%;height:100vh;min-height:600px;max-height:860px;overflow:hidden;display:flex;align-items:flex-end;margin-top:var(--nav-h);}
+.hero-photo{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=1600&q=80') center/cover no-repeat;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.90) 0%,rgba(10,10,10,.65) 45%,rgba(10,10,10,.20) 100%);}
+.hero-content{position:relative;z-index:2;padding:0 var(--pad) 72px;max-width:680px;}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.hero-eyebrow-line{width:24px;height:.5px;background:#CDB182;flex-shrink:0;}
+.hero-eyebrow-text{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.22em;color:#CDB182;text-transform:uppercase;font-weight:400;}
+.hero-title{font-family:'Oswald',sans-serif;font-size:clamp(36px,4.5vw,56px);letter-spacing:.06em;font-weight:400;text-transform:uppercase;color:#FFFFFF;line-height:1.0;margin-bottom:18px;text-shadow:0 2px 24px rgba(0,0,0,.5);}
+.hero-subtitle{font-size:16px;color:rgba(255,255,255,.72);line-height:1.75;font-weight:300;margin-bottom:36px;max-width:480px;}
+.hero-ctas{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+
+/* ── WHY SECTION — light cards ── */
+.why{width:100%;background:#FFFFFF;padding:80px var(--pad);}
+.why-heading{font-family:'Oswald',sans-serif;font-size:32px;letter-spacing:.05em;font-weight:400;text-transform:uppercase;color:#1A1817;margin-bottom:56px;}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:.5px solid #E2DDD7;border-left:.5px solid #E2DDD7;}
+.why-cell{padding:44px 48px 40px;border-right:.5px solid #E2DDD7;border-bottom:.5px solid #E2DDD7;position:relative;transition:background .3s var(--ease);}
+.why-cell:hover{background:rgba(140,115,64,.025);}
+.why-cell-num{font-family:'Oswald',sans-serif;font-size:72px;font-weight:200;color:rgba(140,115,64,.07);letter-spacing:-.02em;line-height:1;position:absolute;top:18px;right:24px;pointer-events:none;user-select:none;}
+.why-icon-row{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+.why-icon-box{width:48px;height:48px;flex-shrink:0;border:.5px solid rgba(140,115,64,.25);background:rgba(140,115,64,.06);display:flex;align-items:center;justify-content:center;position:relative;transition:background .3s,border-color .3s;}
+.why-icon-box::before{content:'';position:absolute;top:-1px;right:-1px;width:9px;height:9px;border-top:1px solid #8C7340;border-right:1px solid #8C7340;opacity:.5;}
+.why-icon-box svg{width:20px;height:20px;stroke:#8C7340;fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;}
+.why-cell:hover .why-icon-box{background:rgba(140,115,64,.12);border-color:rgba(140,115,64,.5);}
+.why-icon-meta{display:flex;flex-direction:column;gap:3px;}
+.why-icon-num{font-family:'Oswald',sans-serif;font-size:9px;letter-spacing:.26em;color:#8C7340;text-transform:uppercase;font-weight:300;}
+.why-icon-cat{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.16em;color:#8E8880;text-transform:uppercase;font-weight:300;}
+.why-cell-title{font-family:'Oswald',sans-serif;font-size:18px;letter-spacing:.06em;font-weight:500;text-transform:uppercase;color:#1A1817;margin-bottom:6px;}
+.why-title-rule{width:28px;height:.5px;background:#8C7340;opacity:.55;margin-bottom:14px;}
+.why-cell-text{font-size:15px;color:#5C5652;line-height:1.75;font-weight:300;}
+.why-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.why-tag{font-family:'Oswald',sans-serif;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#8E8880;border:.5px solid #D4CFC9;padding:5px 11px;font-weight:300;transition:color .2s,border-color .2s;}
+.why-tag:hover{color:#8C7340;border-color:rgba(140,115,64,.4);}
+
+/* ── PRODUCTS SECTION ── */
+.products{width:100%;background:#FAFAF8;padding:80px var(--pad);}
+.products-heading{font-family:'Oswald',sans-serif;font-size:32px;letter-spacing:.05em;font-weight:400;text-transform:uppercase;color:#1A1817;margin-bottom:8px;}
+.products-sub{font-size:15px;color:#5C5652;font-weight:300;margin-bottom:48px;}
+.products-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:.5px solid #D4CFC9;}
+.prod-card{position:relative;}
+.prod-card+.prod-card{border-left:.5px solid #D4CFC9;}
+.prod-photo{width:100%;height:360px;position:relative;overflow:hidden;background:#EAE6E0;display:flex;align-items:center;justify-content:center;}
+.prod-photo-label{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.18em;color:#C4B89A;text-transform:uppercase;}
+.prod-photo::before,.prod-photo::after{content:'';position:absolute;width:20px;height:20px;}
+.prod-photo::before{top:14px;left:14px;border-top:.5px solid #8C7340;border-left:.5px solid #8C7340;opacity:.4;}
+.prod-photo::after{bottom:14px;right:14px;border-bottom:.5px solid #8C7340;border-right:.5px solid #8C7340;opacity:.4;}
+.prod-badge{position:absolute;top:0;left:0;right:0;padding:18px 24px;display:flex;align-items:flex-start;}
+.prod-badge-pill{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:400;color:#8C7340;background:rgba(244,241,236,.92);border:.5px solid rgba(140,115,64,.25);padding:5px 14px;border-radius:2px;}
+.prod-body{padding:36px 36px 40px;background:#FFFFFF;}
+.prod-tag{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.20em;color:#8C7340;text-transform:uppercase;font-weight:300;margin-bottom:8px;}
+.prod-name{font-family:'Oswald',sans-serif;font-size:26px;letter-spacing:.06em;color:#1A1817;text-transform:uppercase;font-weight:400;margin-bottom:10px;line-height:1.1;}
+.prod-desc{font-size:14px;color:#5C5652;line-height:1.65;font-weight:300;margin-bottom:28px;}
+.prod-thickness{display:flex;align-items:baseline;gap:8px;padding-bottom:24px;margin-bottom:24px;border-bottom:.5px solid #E2DDD7;}
+.prod-thickness-val{font-family:'Oswald',sans-serif;font-size:40px;color:#8C7340;font-weight:200;letter-spacing:.02em;line-height:1;}
+.prod-thickness-unit{font-family:'Oswald',sans-serif;font-size:12px;color:#8E8880;letter-spacing:.10em;text-transform:uppercase;font-weight:300;}
+.prod-features{list-style:none;margin-bottom:32px;display:flex;flex-direction:column;gap:11px;}
+.prod-feature{display:flex;align-items:center;gap:12px;}
+.prod-check{width:18px;height:18px;border-radius:50%;border:.5px solid rgba(140,115,64,.4);background:rgba(140,115,64,.07);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.prod-check svg{width:9px;height:9px;stroke:#8C7340;fill:none;stroke-width:2.5;}
+.prod-feature-text{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.06em;color:#1A1817;text-transform:uppercase;font-weight:300;}
+.prod-more{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.12em;color:#8C7340;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;transition:gap .25s;}
+.prod-more:hover{gap:14px;}
+.prod-more svg{width:12px;height:12px;stroke:#8C7340;fill:none;stroke-width:1.5;}
+
+/* ── CTA SECTION — warm parchment ── */
+.cta-section{width:100%;background:#F0EAE0;border-top:.5px solid #D4CFC9;border-bottom:.5px solid #D4CFC9;padding:80px var(--pad);text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(140,115,64,.04) 0,rgba(140,115,64,.04) 1px,transparent 1px,transparent 48px);pointer-events:none;}
+.cta-eyebrow{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.25em;color:#8C7340;text-transform:uppercase;margin-bottom:14px;}
+.cta-title{font-family:'Oswald',sans-serif;font-size:40px;letter-spacing:.06em;color:#1A1817;text-transform:uppercase;font-weight:500;line-height:1.1;margin-bottom:14px;}
+.cta-sub{font-size:15px;color:#5C5652;max-width:540px;margin:0 auto 40px;line-height:1.7;font-weight:300;}
+.cta-btns{display:flex;gap:14px;justify-content:center;}
+.btn-cta-dark{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.10em;text-transform:uppercase;font-weight:400;background:#1A1817;color:#F4F1EC;padding:15px 32px;min-height:50px;border-radius:2px;display:inline-flex;align-items:center;transition:background .25s;cursor:pointer;}
+.btn-cta-dark:hover{background:#2d2a28;}
+.btn-cta-outline{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.10em;text-transform:uppercase;font-weight:300;background:transparent;color:#1A1817;padding:14px 32px;min-height:50px;border-radius:2px;border:.5px solid #D4CFC9;display:inline-flex;align-items:center;transition:border-color .25s,color .25s;cursor:pointer;}
+.btn-cta-outline:hover{border-color:#1A1817;}
+
+/* ── FOCUS ── */
+a:focus-visible,button:focus-visible{outline:2px solid #8C7340;outline-offset:3px;}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1023px){
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .products-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:40px;}
+}
+@media(max-width:640px){
+  :root{--pad:20px;}
+  .why-grid{grid-template-columns:1fr;}
+  .products-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;gap:32px;}
+  .cta-btns{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+<body data-page="ppf">
+
+<div id="nav-placeholder"></div>
+
+<!-- ══ HERO ══ -->
+<section class="hero" aria-label="V-KOOL PPF Hero">
+  <div class="hero-photo" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" aria-hidden="true">
+      <span class="hero-eyebrow-line"></span>
+      <span class="hero-eyebrow-text">Paint Protection Film</span>
+    </div>
+    <h1 class="hero-title">V-KOOL Paint Protection<br>Film</h1>
+    <p class="hero-subtitle">Lindungi cat kendaraan Anda dari goresan, kerusakan, dan polusi dengan teknologi self-healing PPF premium V-KOOL.</p>
+    <div class="hero-ctas">
+      <button class="btn-primary">JADWALKAN KONSULTASI
+        <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <button class="btn-secondary">DEALER TERDEKAT</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KENAPA HARUS PILIH V-KOOL PPF ══ -->
+<section class="why" aria-labelledby="why-heading">
+  <h2 class="why-heading" id="why-heading">Kenapa Harus Pilih V-KOOL PPF?</h2>
+
+  <div class="why-grid">
+
+    <!-- Cell 1 — TPU Premium+ -->
+    <div class="why-cell">
+      <div class="why-cell-num" aria-hidden="true">01</div>
+      <div class="why-icon-row">
+        <div class="why-icon-box" aria-hidden="true">
+          <!-- Layered material / film stack icon -->
+          <svg viewBox="0 0 24 24">
+            <polygon points="12 2 22 8 12 14 2 8"/>
+            <polyline points="2 13 12 19 22 13"/>
+          </svg>
+        </div>
+        <div class="why-icon-meta">
+          <span class="why-icon-num">Keunggulan 01</span>
+          <span class="why-icon-cat">Material Grade</span>
+        </div>
+      </div>
+      <h3 class="why-cell-title">TPU Premium+</h3>
+      <div class="why-title-rule"></div>
+      <p class="why-cell-text">V-KOOL PPF menggunakan material dengan grade tertinggi, yaitu TPU Premium+. Dengan ketebalan 200 micron dan teknologi self-healing, anti-stain, serta sifat hydrophobic, cat original mobil anda akan tetap terlindungi.</p>
+      <div class="why-tags">
+        <span class="why-tag">200µm</span>
+        <span class="why-tag">Self-Healing</span>
+        <span class="why-tag">Hydrophobic</span>
+        <span class="why-tag">Anti-Stain</span>
+      </div>
+    </div>
+
+    <!-- Cell 2 — Pemasangan Presisi -->
+    <div class="why-cell">
+      <div class="why-cell-num" aria-hidden="true">02</div>
+      <div class="why-icon-row">
+        <div class="why-icon-box" aria-hidden="true">
+          <!-- Precision tool / certified installer icon -->
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
+        <div class="why-icon-meta">
+          <span class="why-icon-num">Keunggulan 02</span>
+          <span class="why-icon-cat">Presisi Instalasi</span>
+        </div>
+      </div>
+      <h3 class="why-cell-title">Pemasangan Presisi</h3>
+      <div class="why-title-rule"></div>
+      <p class="why-cell-text">PPF dipasang secara presisi oleh teknisi yang profesional dan berpengalaman dari V-KOOL Installation Academy untuk memastikan cat mobil anda terproteksi sempurna tanpa gelembung atau celah.</p>
+      <div class="why-tags">
+        <span class="why-tag">Certified Installers</span>
+        <span class="why-tag">Star Baffle</span>
+        <span class="why-tag">Full Coverage</span>
+      </div>
+    </div>
+
+    <!-- Cell 3 — Garansi 10 Tahun -->
+    <div class="why-cell">
+      <div class="why-cell-num" aria-hidden="true">03</div>
+      <div class="why-icon-row">
+        <div class="why-icon-box" aria-hidden="true">
+          <!-- Calendar / warranty decade icon -->
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+            <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>
+          </svg>
+        </div>
+        <div class="why-icon-meta">
+          <span class="why-icon-num">Keunggulan 03</span>
+          <span class="why-icon-cat">Jaminan Produk</span>
+        </div>
+      </div>
+      <h3 class="why-cell-title">Garansi 10 Tahun</h3>
+      <div class="why-title-rule"></div>
+      <p class="why-cell-text">Proteksi tanpa rasa khawatir hingga 10 tahun yang terjamin dengan 30 tahun lebih kehadiran V-KOOL di Indonesia. Garansi mencakup yellowing, delamination, dan kerusakan akibat pemasangan.</p>
+      <div class="why-tags">
+        <span class="why-tag">10 Tahun</span>
+        <span class="why-tag">Garansi Digital</span>
+        <span class="why-tag">Anti-Yellowing</span>
+      </div>
+    </div>
+
+    <!-- Cell 4 — Pelayanan Prima -->
+    <div class="why-cell">
+      <div class="why-cell-num" aria-hidden="true">04</div>
+      <div class="why-icon-row">
+        <div class="why-icon-box" aria-hidden="true">
+          <!-- Headset / premium service icon -->
+          <svg viewBox="0 0 24 24">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/>
+            <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+          </svg>
+        </div>
+        <div class="why-icon-meta">
+          <span class="why-icon-num">Keunggulan 04</span>
+          <span class="why-icon-cat">After-Sales</span>
+        </div>
+      </div>
+      <h3 class="why-cell-title">Pelayanan Prima</h3>
+      <div class="why-title-rule"></div>
+      <p class="why-cell-text">Pelayanan prima kami berikan secara menyeluruh mulai dari proses penjadwalan hingga layanan after-sales service dan maintenance. Jaringan dealer V-KOOL tersebar di seluruh kota besar Indonesia.</p>
+      <div class="why-tags">
+        <span class="why-tag">After-Sales</span>
+        <span class="why-tag">Nationwide</span>
+        <span class="why-tag">Maintenance</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ PILIHAN PPF ══ -->
+<section class="products" aria-labelledby="products-heading">
+  <h2 class="products-heading" id="products-heading">PILIHAN PPF</h2>
+  <p class="products-sub">Pilih PPF sesuai dengan preferensi estetika Anda</p>
+
+  <div class="products-grid">
+
+    <!-- ── MATTE ── -->
+    <div class="prod-card">
+      <!-- Photo -->
+      <div class="prod-photo" style="background:url('https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=900&q=80') center/cover no-repeat;">
+        <div class="prod-badge">
+          <span class="prod-badge-pill">V-KOOL PPF MATTE</span>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="prod-body">
+        <div class="prod-tag">Varian — Matte</div>
+        <h3 class="prod-name">V-KOOL PPF Matte</h3>
+        <p class="prod-desc">Penampilan tegas dengan karakter yang agresif.</p>
+
+        <div class="prod-thickness">
+          <span class="prod-thickness-val">200</span>
+          <span class="prod-thickness-unit">Micron<br>Ketebalan</span>
+        </div>
+
+        <ul class="prod-features" role="list">
+          <li class="prod-feature">
+            <span class="prod-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="prod-feature-text">Self Healing</span>
+          </li>
+          <li class="prod-feature">
+            <span class="prod-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="prod-feature-text">Anti Baret</span>
+          </li>
+          <li class="prod-feature">
+            <span class="prod-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="prod-feature-text">Tahan Lama</span>
+          </li>
+          <li class="prod-feature">
+            <span class="prod-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="prod-feature-text">Garansi 10 Tahun</span>
+          </li>
+          <li class="prod-feature">
+            <span class="prod-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="prod-feature-text">Hydrophobic</span>
+          </li>
+        </ul>
+
+        <a class="prod-more" href="vkool_produk_ppf_matte.html" aria-label="More details about PPF Matte">
+          More Details
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── GLOSSY ── -->
+    <div class="prod-card">
+      <!-- Photo -->
+      <div class="prod-photo" style="background:url('https://images.unsplash.com/photo-1502877338535-766e1452684a?w=900&q=80') center/cover no-repeat;">
+        <div class="prod-badge">
+          <span class="prod-badge-pill">V-KOOL PPF GLOSSY</span>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="prod-body">
+        <div class="prod-tag">Varian — Glossy</div>
+        <h3 class="prod-name">V-KOOL PPF Glossy</h3>
+        <p class="prod-desc">Penampilan yang jernih dan natural dengan kilap maksimal.</p>
+
+        <div class="prod-thickness">
+          <span class="prod-thickness-val">200</span>
+          <span class="prod-thickness-unit">Micron<br>Ketebalan</span>
+        </div>
+
+        <ul class="prod-features" role="list">
+          <li class="prod-feature">
+            <span class="prod-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="prod-feature-text">Self Healing</span>
+          </li>
+          <li class="prod-feature">
+            <span class="prod-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="prod-feature-text">Anti Baret</span>
+          </li>
+          <li class="prod-feature">
+            <span class="prod-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="prod-feature-text">Tahan Lama</span>
+          </li>
+          <li class="prod-feature">
+            <span class="prod-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="prod-feature-text">Garansi 10 Tahun</span>
+          </li>
+          <li class="prod-feature">
+            <span class="prod-check" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span class="prod-feature-text">Hydrophobic</span>
+          </li>
+        </ul>
+
+        <a class="prod-more" href="vkool_produk_ppf_glossy.html" aria-label="More details about PPF Glossy">
+          More Details
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-section" aria-label="Call to action">
+  <p class="cta-eyebrow">Mulai Sekarang</p>
+  <h2 class="cta-title">Proteksi Eksterior Tanpa Kompromi</h2>
+  <p class="cta-sub">Lindungi cat orisinal kendaraan dari goresan, kerikil, dan noda dengan teknologi self-healing terbaik di kelasnya. Konsultasi gratis dengan installer profesional kami.</p>
+  <div class="cta-btns">
+    <button class="btn-cta-dark">Permintaan Harga</button>
+    <button class="btn-cta-outline">Jadwalkan Konsultasi</button>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+/* Nav scroll */
+window.addEventListener('scroll', () => {const nav = document.getElementById('nav');if(nav) nav.classList.toggle('scrolled', window.scrollY > 40);}, {passive:true});
+
+/* Dropdown hover aria-expanded */
+document.querySelectorAll('.nav-dropdown').forEach(dd => {
+  const trigger = dd.querySelector('.nav-dropdown-trigger');
+  dd.addEventListener('mouseenter', () => trigger.setAttribute('aria-expanded','true'));
+  dd.addEventListener('mouseleave', () => trigger.setAttribute('aria-expanded','false'));
+});
+
+/* Dynamic footer year */
+const fyEl = document.getElementById('footer-year');
+if (fyEl) fyEl.textContent = `Copyright © ${new Date().getFullYear()} V-KOOL INDONESIA — Legal & Privacy Policy`;
+</script>
+<script src="nav-footer-light.js"></script>
+</body>
+</html>
